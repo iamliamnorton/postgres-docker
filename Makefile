@@ -1,7 +1,8 @@
 PROJECT           = postgres
-TAG              ?= dev
+REGISTRY  	  = iamliamnorton
+TAG              ?= latest
 
-IMAGE = $(PROJECT):$(TAG)
+IMAGE = $(REGISTRY)/$(PROJECT):$(TAG)
 
 .PHONY: build
 build:
@@ -25,3 +26,7 @@ run:
 	  --privileged \
 	  $(IMAGE) \
 	  postgres
+
+.PHONY: push
+push:
+	docker push $(IMAGE)
