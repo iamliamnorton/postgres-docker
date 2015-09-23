@@ -13,6 +13,4 @@ dependencies:
 
 test:
   override:
-    - docker run iamliamnorton/postgres true
-    #- docker run -d --name=postgresql iamliamnorton/postgres; sleep 10
-    #- docker run -it --volumes-from=postgresql iamliamnorton/postgres sudo -u postgres -H psql -c "\conninfo"
+    - docker run iamliamnorton/postgres postgres --version
