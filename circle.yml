@@ -1,0 +1,18 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - "~/postgres-docker"
+  override:
+    - docker info
+    - if [[ -e ~/postgres-docker/image.tar ]]; then docker load --input ~/postgres-docker/image.tar; fi
+    - docker build -t iamliamnorton/postgres .
+    - mkdir -p ~/postgres-docker; docker save --output ~/postgres-docker/image.tar iamliamnorton/postgres
+
+test:
+  override:
+    - docker run iamliamnorton/postgres true
+    #- docker run -d --name=postgresql iamliamnorton/postgres; sleep 10
+    #- docker run -it --volumes-from=postgresql iamliamnorton/postgres sudo -u postgres -H psql -c "\conninfo"

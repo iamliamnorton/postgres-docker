@@ -1,5 +1,7 @@
 # Postgres Docker
 
+[![Circle CI](https://circleci.com/gh/iamliamnorton/postgres-docker.png?style=shield)](https://circleci.com/gh/iamliamnorton/postgres-docker)
+
 This is a Postgres 9.4 image.
 
 ## Building
@@ -8,8 +10,12 @@ This is a Postgres 9.4 image.
 
 ## Shell
 
-    $ make build shell
+Access to bash.
 
-## Run
+    $ make shell
 
-    $ make build run
+## Test
+
+Test image.
+
+    $ make test
