@@ -10,22 +10,24 @@ build:
 
 .PHONY: test
 test:
-	docker run --rm -t $(IMAGE) true
+	docker run --rm -it \
+	  $(IMAGE) \
+	  postgres --version
 
 .PHONY: shell
 shell:
-	docker run --rm -it --privileged $(IMAGE) bash
+	docker run --rm -it \
+	  --privileged \
+	  $(IMAGE) \
+	  bash
 
 .PHONY: run
 run:
 	docker run --rm -it \
-	  --name $(PROJECT)_$(TAG) \
-	  -p 5432:5432 \
+	  -p 5433:5433 \
 	  -v /var/lib/postgresql/data:/data \
 	  -e "PERSIST_DATA=true" \
-	  --privileged \
-	  $(IMAGE) \
-	  postgres
+	  $(IMAGE)
 
 .PHONY: push
 push:
