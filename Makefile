@@ -24,7 +24,7 @@ shell:
 .PHONY: run
 run:
 	docker run --rm -it \
-	  -p 5433:5433 \
+	  -p 5432:5432 \
 	  -v /var/lib/postgresql/data:/data \
 	  -e "PERSIST_DATA=true" \
 	  $(IMAGE)
